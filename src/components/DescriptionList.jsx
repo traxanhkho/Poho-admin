@@ -2,7 +2,7 @@ import { PaperClipIcon } from "@heroicons/react/20/solid";
 import Breadcrumb from "./common/Breadcrumb";
 import LanguageSelector from "./common/LanguageSelector";
 import LinkSocial from "./common/LinkSocial";
-import StatusBtn from "./common/statusBtn";
+import StatusBtn from "./common/StatusBtn";
 
 export default function DescriptionList() {
   return (
