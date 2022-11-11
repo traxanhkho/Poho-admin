@@ -7,7 +7,7 @@ import Search from "./common/Search";
 const people = [
   {
     // img : <img src="./assets/images/" alt="ảnh đại diện thành viên"/>,
-    name: "Lindsay Walton",
+    name: "Lindsay Walto",
     title: "Front-end Developer",
     email: "lindsay.walton@example.com",
     role: "Member",
