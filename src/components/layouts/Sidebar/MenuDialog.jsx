@@ -60,7 +60,7 @@ function MenuDialog({ navigation, sidebarOpen, setSidebarOpen }) {
               <div className="flex flex-shrink-0 items-center px-4">
                 <img
                   className="h-8 w-auto"
-                  src="./assets/images/logo.svg"
+                  src="./assets/images/Logo.svg"
                   alt="Logo Công ty Poho"
                 />
               </div>

@@ -9,7 +9,7 @@ function MenuSidebar({ navigation }) {
         <div className="flex flex-shrink-0 items-center px-4">
           <img
             className="h-8 w-auto"
-            src="./assets/images/logo.svg"
+            src="./assets/images/Logo.svg"
             alt="logo Công ty Poho"
           />
         </div>
