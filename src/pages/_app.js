@@ -1,8 +1,13 @@
-import "font-awesome/css/font-awesome.min.css" ; 
-import '../styles/globals.scss' ; 
+import "font-awesome/css/font-awesome.min.css";
+import UseAdminContext from "../context/AdminContext";
+import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <UseAdminContext>
+      <Component {...pageProps} />
+    </UseAdminContext>
+  );
 }
 
-export default MyApp
+export default MyApp;

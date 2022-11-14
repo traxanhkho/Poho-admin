@@ -3,7 +3,6 @@ import MenuSidebar from "./MenuSidebar";
 import TopBar from "./TopBar";
 import MenuDialog from "./MenuDialog";
 
-
 const navigation = [
   { title: "Quản lý" },
   {
@@ -48,9 +47,8 @@ const navigation = [
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Sign out", href: "#", logout: true },
 ];
-
 
 export default function Sidebar({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -64,9 +62,12 @@ export default function Sidebar({ children }) {
           setSidebarOpen={setSidebarOpen}
         />
 
-       <MenuSidebar navigation={navigation} />
+        <MenuSidebar navigation={navigation} />
         <div className="flex flex-1 flex-col md:pl-64">
-          <TopBar userNavigation={userNavigation} setSidebarOpen={setSidebarOpen}/>
+          <TopBar
+            userNavigation={userNavigation}
+            setSidebarOpen={setSidebarOpen}
+          />
 
           <main>{children}</main>
         </div>
