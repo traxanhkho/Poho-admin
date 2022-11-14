@@ -1,3 +1,6 @@
+import Avatar from "./common/Avatar";
+import AvatarTable from "./common/AvatarTable";
+import Badge from "./common/Badge";
 import Breadcrumb from "./common/Breadcrumb";
 import Dropdown from "./common/Dropdown";
 import Modal from "./common/Modal";
@@ -6,37 +9,101 @@ import Search from "./common/Search";
 
 const people = [
   {
-    // img : <img src="./assets/images/" alt="ảnh đại diện thành viên"/>,
-    name: "Lindsay Walto",
-    title: "Front-end Developer",
+    _id: 1,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "nguyễn văn A",
+    numberPhone: "0322334455",
     email: "lindsay.walton@example.com",
-    role: "Member",
+    profileBusiness: {
+      isActive: true,
+      label: "Đã tạo",
+    },
+    active: {
+      isActive: true,
+      label: "Đang hoạt động",
+    },
   },
   {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.co",
-    role: "Member",
+    _id: 2,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "đặng Tất",
+    numberPhone: "0322334455",
+    email: "lindsay.walton@example.com",
+    profileBusiness: {
+      isActive: false,
+      label: "Chưa tạo",
+    },
+    active: {
+      isActive: true,
+      label: "Đang hoạt động",
+    },
   },
   {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.om",
-    role: "Member",
+    _id: 3,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Phạm văn Đồng",
+    numberPhone: "0322334455",
+    email: "lindsay.walton@example.com",
+    profileBusiness: {
+      isActive: false,
+      label: "Chưa tạo",
+    },
+    active: {
+      isActive: true,
+      label: "Đang hoạt động",
+    },
   },
   {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@exampl.com",
-    role: "Member",
+    _id: 4,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Nguyễn văn Bưởi",
+    numberPhone: "0322334455",
+    email: "lindsay.walton@example.com",
+    profileBusiness: {
+      isActive: true,
+      label: "Đã tạo",
+    },
+    active: {
+      isActive: true,
+      label: "Đang hoạt động",
+    },
   },
   {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@examle.com",
-    role: "Member",
+    _id: 5,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Nguyễn văn Bưởi",
+    numberPhone: "0322334455",
+    email: "lindsay.walton@example.com",
+    profileBusiness: {
+      isActive: true,
+      label: "Đã tạo",
+    },
+    active: {
+      isActive: true,
+      label: "Đang hoạt động",
+    },
   },
-  // More people...
+  {
+    _id: 6,
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Nguyễn văn Bưởi",
+    numberPhone: "0322334455",
+    email: "lindsay.walton@example.com",
+    profileBusiness: {
+      isActive: true,
+      label: "Đã tạo",
+    },
+    active: {
+      isActive: true,
+      label: "Đang hoạt động",
+    },
+  },
 ];
 
 export default function Tables() {
@@ -45,10 +112,8 @@ export default function Tables() {
       <div className="sm:flex sm:items-center sm:h-10">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Danh Sách</h1>
-          {/* <Breadcrumb /> */}
         </div>
         <div className="mt-4 sm:mt-0 sm:flex-none">
-          {/* <Modal /> */}
           <Search />
         </div>
       </div>
@@ -63,31 +128,37 @@ export default function Tables() {
                       scope="col"
                       className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-c-gray-3 sm:pl-4"
                     >
-                      Name
+                      Avatar
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold  text-c-gray-3"
+                      className="px-3 py-3.5 text-left text-sm font-semibold capitalize  text-c-gray-3"
                     >
-                      Title
+                      Họ và tên
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold  text-c-gray-3"
+                      className="px-3 py-3.5 text-left text-sm font-semibold capitalize text-c-gray-3"
+                    >
+                      số điện thoại
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold capitalize text-c-gray-3"
                     >
                       Email
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold  text-c-gray-3"
+                      className="px-3 py-3.5 text-left text-sm font-semibold capitalize text-c-gray-3"
                     >
-                      Role
+                      Hồ sơ doanh nghiệp
                     </th>
                     <th
                       scope="col"
-                      className="relative py-3.5 pl-3 pr-4 sm:pr-6 lg:pr-8  text-c-gray-3"
+                      className="px-3 py-3.5 text-left text-sm font-semibold capitalize text-c-gray-3"
                     >
-                      <span className="sr-only">Edit</span>
+                      Trạng thái
                     </th>
                     <th
                       scope="col"
@@ -99,27 +170,26 @@ export default function Tables() {
                 </thead>
                 <tbody className=" bg-white">
                   {people.map((person) => (
-                    <tr key={person.email}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-4">
+                    <tr key={person._id}>
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm  text-gray-900 sm:pl-4">
+                        <Avatar avtUrl={person.avatar} />
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 font-medium text-sm">
                         {person.name}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
+                      <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                        {person.numberPhone}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
                         {person.email}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
+                      <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                        {<Badge active={person.profileBusiness} />}
                       </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 lg:pr-8">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Edit<span className="sr-only">, {person.name}</span>
-                        </a>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
+                        {<Badge active={person.active} />}
                       </td>
+
                       <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 lg:pr-8">
                         <Dropdown />
                       </td>

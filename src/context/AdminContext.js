@@ -1,15 +1,13 @@
-import { createContext, useContext, useState } from "react";
+import { createContext , useState } from "react";
 
 export const AdminContext = createContext();
-
 
 function UseAdminContext({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
 
-  
   const data = {
     currentUser: currentUser,
-    setCurrentUser 
+    setCurrentUser,
   };
   return <AdminContext.Provider value={data}>{children}</AdminContext.Provider>;
 }

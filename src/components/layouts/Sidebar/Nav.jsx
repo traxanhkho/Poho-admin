@@ -9,13 +9,13 @@ function Nav({ navigation }) {
       {navigation.map((item) => {
         if (item.title)
           return (
-            <h4 key={item.title} className="text-primary">
+            <h4 key={item._id} className="text-primary">
               {item.title}
             </h4>
           );
         return (
           <a
-            key={item.name}
+            key={item._id}
             href={item.href}
             className={classNames(
               item.current
