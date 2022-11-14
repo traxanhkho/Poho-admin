@@ -1,7 +1,7 @@
 import Badge from "./common/Badge";
 import Breadcrumb from "./common/Breadcrumb";
 import DescriptionLinkSocials from "./common/DescriptionLinkSocials";
-import DescriptionListAvatar from "./common/descriptionListAvatar";
+import DescriptionListAvatar from "./common/DescriptionListAvatar";
 import LanguageSelector from "./common/LanguageSelector";
 
 const businessFile = [
