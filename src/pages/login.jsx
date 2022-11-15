@@ -49,12 +49,12 @@ export default function Login() {
               alt="Your Company"
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-              Sign in to your account
+              Đăng Nhập
             </h2>
             {valid && (
               <div className="w-full h-12 flex shadow-sm border bg-[#e9a1a1] border-c-red-1 text-center mt-4">
                 <h2 className=" capitalize font-bold  m-auto">
-                  your username or password is not valid
+                  Tài khoản hoặc mật khẩu của bạn đã sai
                 </h2>
               </div>
             )}
@@ -68,7 +68,7 @@ export default function Login() {
                     htmlFor="username"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Username
+                    Tài khoản
                   </label>
                   <div className="mt-1">
                     <input
@@ -84,7 +84,7 @@ export default function Login() {
                   </div>
                   {errors.username && errors.username.type === "required" && (
                     <p className="mt-2 text-sm text-[red]" id="email-error">
-                      username is required.
+                      Tài khoản không hợp lệ
                     </p>
                   )}
                 </div>
@@ -94,7 +94,7 @@ export default function Login() {
                     htmlFor="password"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Password
+                    Mật khẩu
                   </label>
                   <div className="mt-1">
                     <input
@@ -110,7 +110,7 @@ export default function Login() {
                   </div>
                   {errors.password && errors.password.type === "required" && (
                     <p className="mt-2 text-sm text-[red]" id="email-error">
-                      Your password is required.
+                      Mật khẩu của bạn không hợp lệ
                     </p>
                   )}
                 </div>
@@ -127,7 +127,7 @@ export default function Login() {
                       htmlFor="remember-me"
                       className="ml-2 block text-sm text-gray-900"
                     >
-                      Remember me
+                      Nhớ mật khẩu
                     </label>
                   </div>
 
@@ -136,7 +136,7 @@ export default function Login() {
                       href="#"
                       className="font-medium text-indigo-600 hover:text-indigo-500"
                     >
-                      Forgot your password?
+                      Quên Mật Khẩu
                     </a>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export default function Login() {
                     type="submit"
                     className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
-                    Sign in
+                    Đăng Nhập
                   </button>
                 </div>
               </form>
