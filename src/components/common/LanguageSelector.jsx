@@ -18,7 +18,7 @@ export default function LanguageSelector() {
     <div className="inline-block">
       <Listbox value={selected} onChange={setSelected}>
         {({ open }) => (
-          <div className="flex flex-row items-center my-4 px-4 rounded-2xl bg-c-white-1">
+          <div className="flex flex-row items-center  px-4 rounded-2xl bg-c-white-1">
             <Listbox.Label className="inline-block text-sm text-gray-700">
               Ngôn ngữ :
             </Listbox.Label>

@@ -3,7 +3,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
 import Nav from "./Nav";
 
-function MenuDialog({ navigation, sidebarOpen, setSidebarOpen }) {
+function MenuDialog({  sidebarOpen, setSidebarOpen }) {
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
       <Dialog
@@ -60,17 +60,16 @@ function MenuDialog({ navigation, sidebarOpen, setSidebarOpen }) {
               <div className="flex flex-shrink-0 items-center px-4">
                 <img
                   className="h-8 w-auto"
-                  src="./assets/images/Logo.svg"
+                  src="/assets/images/Logo.svg"
                   alt="Logo Công ty Poho"
                 />
               </div>
               <div className="mt-5 h-0 flex-1 overflow-y-auto">
-                <Nav navigation={navigation} />
+                <Nav  />
               </div>
             </Dialog.Panel>
           </Transition.Child>
           <div className="w-14 flex-shrink-0" aria-hidden="true">
-            {/* Dummy element to force sidebar to shrink to fit close icon */}
           </div>
         </div>
       </Dialog>

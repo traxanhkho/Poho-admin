@@ -1,18 +1,18 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown() {
+export default function Dropdown({ userId }) {
   return (
     <Menu as="div" className=" relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center bg-white px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 focus:outline-none  ">
           {/* dropdown title */}
-          {/* <ChevronDownIcon className="h-5 w-5" aria-hidden="true" /> */}
           <svg
             width="4"
             height="16"
@@ -41,8 +41,8 @@ export default function Dropdown() {
           <div className="p-2">
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <Link
+                  href={`/personal/${userId}`}
                   className={classNames(
                     active
                       ? " rounded-[30px] bg-c-blue-1 text-primary"
@@ -51,7 +51,7 @@ export default function Dropdown() {
                   )}
                 >
                   Xem hồ sơ DN
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>

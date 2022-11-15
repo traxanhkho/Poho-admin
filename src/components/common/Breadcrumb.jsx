@@ -1,10 +1,8 @@
 import { ChevronLeftIcon, HomeIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
-const pages = [
-  { name: "Cty sản xuất thiết bị công nghệ T2T", href: "#", current: false },
-];
 
-export default function Breadcrumb({ type, children, classNames }) {
+export default function Breadcrumb({ type, children, classNames , pages }) {
   return (
     <nav
       className={`flex items-center gap-2 ${classNames}`}
@@ -14,17 +12,17 @@ export default function Breadcrumb({ type, children, classNames }) {
         {pages.map((page) => (
           <li key={page.name}>
             <div className="flex items-center">
-              <ChevronLeftIcon
-                className="h-8 w-8 flex-shrink-0 text-gray-400"
-                aria-hidden="true"
-              />
-              <a
+              <Link
                 href={page.href}
-                className="ml-1 text-[18px] leading-7 font-bold hover:text-c-gray-3"
+                className="ml-1 flex text-[18px] leading-7 font-bold hover:text-c-gray-3"
                 aria-current={page.current ? "page" : undefined}
               >
+                <ChevronLeftIcon
+                  className="h-8 w-8 flex-shrink-0 text-gray-400"
+                  aria-hidden="true"
+                />
                 {page.name}
-              </a>
+              </Link>
             </div>
           </li>
         ))}

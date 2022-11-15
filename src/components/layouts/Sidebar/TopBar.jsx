@@ -1,8 +1,39 @@
-
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 import UserMenu from "./UserMenu";
 
-function TopBar({userNavigation , setSidebarOpen }) {
+function TopBar({ setSidebarOpen }) {
+  const router = useRouter();
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    let str = "/";
+    for (let i = 1; i < router.asPath.length; i++) {
+      let path = router.asPath.charAt(i);
+      if (path === "/") break;
+      str += path;
+    }
+    
+    switch (str) {
+      case "/": {
+        setTitle("Danh Mục");
+        break;
+      }
+      case "/business": {
+        setTitle("Hồ sơ doanh nghiệp");
+        break;
+      }
+      case "/personal": {
+        setTitle("Hồ sơ cá nhân");
+        break;
+      }
+      default:
+        setTitle("Danh mục");
+    }
+  }, []);
+
   return (
     <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-[#fff] shadow">
       <button
@@ -15,12 +46,11 @@ function TopBar({userNavigation , setSidebarOpen }) {
       </button>
       <div className="flex flex-1 justify-between items-center px-4">
         <div>
-          {/* <Breadcrumb type={"heading"} /> */}
-          <h4 className="font-bold">Danh Mục</h4>
+          <h4 className="font-bold capitalize">{title}</h4>
         </div>
         <div className="ml-4 flex items-center md:ml-6">
           {/* Profile dropdown */}
-          <UserMenu userNavigation={userNavigation} />
+          <UserMenu />
         </div>
       </div>
     </div>

@@ -3,9 +3,10 @@ import { Menu, Transition } from "@headlessui/react";
 import { AdminContext } from "../../../context/AdminContext";
 import { useRouter } from "next/router";
 
-function UserMenu({ userNavigation }) {
+function UserMenu() {
   const router = useRouter(AdminContext);
   const { currentUser, setCurrentUser } = useContext(AdminContext);
+  const { userNavigation } = useContext(AdminContext);
 
   const onLogout = () => {
     setCurrentUser(null);

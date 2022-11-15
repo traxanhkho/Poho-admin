@@ -63,14 +63,26 @@ const businessFile = [
   },
 ];
 
+const pages = [
+  { name: "Hồ sơ Doanh nghiệp", href: "/business", current: false },
+];
+
 export default function DescriptionList() {
   return (
-    <div className="overflow-hidden p-4 bg-[#fff] shadow sm:rounded-lg">
+    <div
+      className="overflow-hidden p-4 bg-[#fff] shadow sm:rounded-lg"
+      pages={pages}
+    >
       <div>
-        <Breadcrumb classNames="pb-4 border-b boder-solid border-c-white-1">
+        <Breadcrumb
+          pages={pages}
+          classNames="pb-4 border-b boder-solid border-c-white-1"
+        >
           <Badge active={{ isActive: true, label: "đang hoạt động" }} />
         </Breadcrumb>
-        <LanguageSelector />
+        <div className="my-4">
+          <LanguageSelector />
+        </div>
       </div>
       <div className=" px-4 py-5 sm:p-0">
         <dl>

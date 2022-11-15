@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import { AdminContext } from "../context/AdminContext";
 import Avatar from "./common/Avatar";
 import AvatarTable from "./common/AvatarTable";
 import Badge from "./common/Badge";
@@ -107,8 +110,27 @@ const people = [
 ];
 
 export default function Tables() {
+  // const router = useRouter(); 
+  // const [data,setData] = useState([]); 
+  // const {users , companies} = useContext(AdminContext) ; 
+
+  // useEffect(() =>{
+  //   let str = "/";
+  //   for (let i = 1; i < router.asPath.length; i++) {
+  //     let path = router.asPath.charAt(i);
+  //     if (path === "/") break;
+  //     str += path;
+  //   }
+
+  //   switch(str){
+  //     case "/": {
+  //       setData(companies)
+  //     }
+  //   }
+
+  // },[])
   return (
-    <div className="px-4 sm:p-4 bg-[#fff] min-h-[84vh] mb-1 rounded-2xl">
+    <div className="px-4 sm:p-4 bg-[#fff] rounded-2xl">
       <div className="sm:flex sm:items-center sm:h-10">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Danh Sách</h1>
@@ -140,7 +162,7 @@ export default function Tables() {
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold capitalize text-c-gray-3"
                     >
-                      số điện thoại
+                      Số điện thoại
                     </th>
                     <th
                       scope="col"
@@ -191,7 +213,7 @@ export default function Tables() {
                       </td>
 
                       <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 lg:pr-8">
-                        <Dropdown />
+                        <Dropdown userId={person._id}/>
                       </td>
                     </tr>
                   ))}

@@ -1,6 +1,47 @@
-import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect } from "react";
+import { AdminContext } from "../../../context/AdminContext";
 
-function Nav({ navigation }) {
+function Nav() {
+  const { navigation, setNavigation } = useContext(AdminContext);
+  const router = useRouter();
+  const allNav = [...navigation];
+
+  useEffect(() => {
+    let str = "/";
+    for (let i = 1; i < router.asPath.length; i++) {
+      let path = router.asPath.charAt(i);
+      if(path === "/") return ; 
+      str += path;
+    }
+    console.log(str)
+    switch (str) {
+      case "/": {
+        setCurrentLink(2);
+        break;
+      }
+      case "/business": {
+        setCurrentLink(3);
+        break;
+      }
+      case "/personal": {
+        setCurrentLink(4);
+        break;
+      }
+      default:
+        setCurrentLink(2);
+    }
+  }, []);
+
+  const setCurrentLink = (id) => {
+    const newList = allNav.map((item) =>
+      item._id == id ? { ...item, current: true } : { ...item, current: false }
+    );
+
+    setNavigation(newList);
+  };
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -13,8 +54,9 @@ function Nav({ navigation }) {
               {item.title}
             </h4>
           );
+
         return (
-          <a
+          <Link
             key={item._id}
             href={item.href}
             className={classNames(
@@ -34,7 +76,7 @@ function Nav({ navigation }) {
             />
 
             {item.name}
-          </a>
+          </Link>
         );
       })}
     </nav>
