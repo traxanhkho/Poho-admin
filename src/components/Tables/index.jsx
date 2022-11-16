@@ -12,6 +12,8 @@ export default function Tables({ children }) {
   useEffect(() => {
     if (router.pathname === "/") setSearch(false);
   });
+
+  
   return (
     <>
       <div className="px-4 sm:p-4 bg-[#fff] rounded-2xl">
