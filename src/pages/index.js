@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import Dashboard from "../components/common/Dashboard";
 import Sidebar from "../components/layouts/Sidebar";
 import Tables from "../components/Tables";
+import TableList from "../components/Tables/TableList";
 import { AdminContext } from "../context/AdminContext";
 
 export default function Home() {
@@ -28,7 +29,9 @@ export default function Home() {
         </Head>
         <Sidebar>
           <Dashboard>
-            <Tables />
+            <Tables >
+              <TableList />
+            </Tables>
           </Dashboard>
         </Sidebar>
       </>

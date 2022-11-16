@@ -1,13 +1,10 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
-export default function Dropdown({ userId }) {
+
+
+export default function Dropdown({ children }) {
   return (
     <Menu as="div" className=" relative inline-block text-left">
       <div>
@@ -37,55 +34,7 @@ export default function Dropdown({ userId }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute menu-item top-full right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl overflow-hidden bg-[#fff] border border-c-gray-5 shadow-lg  focus:outline-none">
-          <div className="p-2">
-            <Menu.Item>
-              {({ active }) => (
-                <Link
-                  href={`/personal/${userId}`}
-                  className={classNames(
-                    active
-                      ? " rounded-[30px] bg-c-blue-1 text-primary"
-                      : "text-[black]",
-                    "block px-[20px] py-[10px] text-[16px]"
-                  )}
-                >
-                  Xem hồ sơ DN
-                </Link>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active
-                      ? " rounded-[30px] bg-c-blue-1 text-primary"
-                      : "text-[black]",
-                    "block px-[20px] py-[10px] text-[16px]"
-                  )}
-                >
-                  Chỉnh hồ sơ DN
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active
-                      ? " rounded-[30px] bg-c-blue-1 text-primary"
-                      : "text-[black]",
-                    "block px-[20px] py-[10px] text-[16px]"
-                  )}
-                >
-                  Khóa tài khoản
-                </a>
-              )}
-            </Menu.Item>
-          </div>
-        </Menu.Items>
+        {children}
       </Transition>
     </Menu>
   );

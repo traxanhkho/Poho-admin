@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = {
-  "primary": "#1e5bee",
+  primary: "#1e5bee",
   "c-blue-1": "#F4F7FE",
   "c-black-1": "#121212",
   "c-black-2": "#130F26",
@@ -10,7 +10,9 @@ const colors = {
   "c-gray-2": "rgba(255, 255, 255, 0.1)",
   "c-gray-3": "#545454",
   "c-gray-4": "#999999",
-  "c-gray-5" : "#DFDFDF" , 
+  "c-gray-5": "#DFDFDF",
+  "c-gray-6": "#F2F2F7",
+  "c-gray-7": "rgba(0, 0, 0, 0.3)",
   "c-red-1": "#FF3B30",
 };
 
@@ -22,7 +24,7 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    colors: colors 
+    colors: colors,
   },
   plugins: [
     //..

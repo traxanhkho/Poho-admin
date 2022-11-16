@@ -5,6 +5,7 @@ import { AdminContext } from "../../context/AdminContext";
 import Dashboard from "../../components/common/Dashboard";
 import Sidebar from "../../components/layouts/Sidebar";
 import Tables from "../../components/Tables" ; 
+import TableUsers from "../../components/Tables/TableUsers";
 
 
 
@@ -30,7 +31,9 @@ export default function Home() {
         </Head>
         <Sidebar>
           <Dashboard>
-            <Tables />
+            <Tables >
+              <TableUsers />
+            </Tables>
           </Dashboard>
         </Sidebar>
       </>
