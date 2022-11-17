@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Modal from "../common/Modal";
 import Pagination from "../common/Pagination";
 import Search from "../common/Search";
+import DatePicker from "../DatePicker";
 
 export default function Tables({ children }) {
   const router = useRouter();
@@ -13,13 +14,13 @@ export default function Tables({ children }) {
     if (router.pathname === "/") setSearch(false);
   });
 
-  
   return (
     <>
       <div className="px-4 sm:p-4 bg-[#fff] rounded-2xl">
         <div className="sm:flex sm:items-center sm:h-10">
-          <div className="sm:flex-auto">
+          <div className="sm:flex-auto flex items-center mt-2 gap-4">
             <h1 className="text-xl font-semibold text-gray-900">Danh Sách</h1>
+            {router.pathname == "/censorshipProduct" ? <DatePicker /> : null}
           </div>
           <div className="mt-4 sm:mt-0 sm:flex-none">
             {search ? (

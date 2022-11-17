@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
+  getCensorshipProduct,
   getDataCompanies,
+  getDataCompanyProducts,
   getDataListCategory,
   getDataUi,
   getDataUsers,
@@ -15,6 +17,8 @@ function UseAdminContext({ children }) {
   const [users, setUsers] = useState([]);
   const [companies, setCompanies] = useState([]);
   const [listCategory, setListCategory] = useState([]);
+  const [companyProducts, setCompanyProducts] = useState(null);
+  const [censorshipProduct, setCensorshipProduct] = useState(null);
 
   const data = {
     currentUser: currentUser,
@@ -25,6 +29,8 @@ function UseAdminContext({ children }) {
     users,
     companies,
     listCategory,
+    companyProducts,
+    censorshipProduct,
   };
 
   useEffect(() => {
@@ -33,6 +39,8 @@ function UseAdminContext({ children }) {
     setUsers(getDataUsers());
     setCompanies(getDataCompanies());
     setListCategory(getDataListCategory());
+    setCompanyProducts(getDataCompanyProducts());
+    setCensorshipProduct(getCensorshipProduct());
   }, []);
 
   return <AdminContext.Provider value={data}>{children}</AdminContext.Provider>;

@@ -28,7 +28,7 @@ const dataUI = {
     {
       _id: 6,
       name: "Sản Phẩm",
-      href: "/products",
+      href: "/censorshipProduct",
       iconLink: "/assets/images/icon/Product.svg",
       current: false,
     },
@@ -238,6 +238,122 @@ const listCategory = {
   ],
 };
 
+const dataCompanyProducts = {
+  dataHead: ["Hình ảnh", "Tên sản phẩm", "Danh mục", "Trạng thái", ""],
+  dataBody: [
+    {
+      _id: 1,
+      imgURL:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+      name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
+      category: "Điện tử  - Công nghệ",
+      status: "active",
+    },
+    {
+      _id: 2,
+      imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
+      name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
+      category: "Điện tử  - Công nghệ",
+      status: "active",
+    },
+    {
+      _id: 3,
+      imgURL:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+      name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
+      category: "Điện tử  - Công nghệ",
+      status: "lock",
+    },
+    {
+      _id: 4,
+      imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
+      name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
+      category: "Điện tử  - Công nghệ",
+      status: "active",
+    },
+    {
+      _id: 5,
+      imgURL:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+      name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
+      category: "Điện tử  - Công nghệ",
+      status: "lock",
+    },
+    {
+      _id: 6,
+      imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
+      name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
+      category: "Điện tử  - Công nghệ",
+      status: "active",
+    },
+  ],
+};
+
+const censorshipProduct = {
+  dataHead: ["Ngày", "Hình ảnh", "Tên sản phẩm", "Danh mục", "Đã xem", ""],
+  dataBody: [
+    {
+      _id: 1,
+      imgURL:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+      dateInitial: "12/02/2022",
+      name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
+      category: "Điện tử  - Công nghệ",
+      seen: true,
+    },
+    {
+      _id: 2,
+      imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
+      dateInitial: "12/02/2022",
+      name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
+      category: "Điện tử  - Công nghệ",
+      seen: true,
+    },
+    {
+      _id: 3,
+      imgURL:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+      dateInitial: "12/02/2022",
+      name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
+      category: "Điện tử  - Công nghệ",
+      seen: false,
+    },
+    {
+      _id: 4,
+      imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
+      dateInitial: "12/02/2022",
+      name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
+      category: "Điện tử  - Công nghệ",
+      seen: false,
+    },
+    {
+      _id: 5,
+      imgURL:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+      dateInitial: "12/02/2022",
+      name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
+      category: "Điện tử  - Công nghệ",
+      seen: true,
+    },
+    {
+      _id: 6,
+      imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
+      dateInitial: "12/02/2022",
+      name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
+      category: "Điện tử  - Công nghệ",
+      seen: true,
+    },
+  ],
+};
+
+export const getCensorshipProduct = () => produce(censorshipProduct, (draft) => draft);
+
+export const getDataCompanyProducts = () => {
+  const data = produce(dataCompanyProducts, (draft) => draft);
+
+  return data;
+};
+
 export const getDataUi = () => {
   const data = produce(dataUI, (draft) => draft);
 
@@ -264,6 +380,6 @@ export const getDataListCategory = () => {
 
 export const getCategory = (id) => {
   const index = listCategory.dataBody.findIndex((item) => item._id === id);
-  
+
   return produce(listCategory.dataBody[index], (draft) => draft);
 };

@@ -1,24 +1,27 @@
 import { Menu } from "@headlessui/react";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
+import CompanyProduct from "../../pages/business/[companyId]/companyProduct";
+import Avatar from "../common/Avatar";
 import Badge from "../common/Badge";
-import Check from "../common/Check";
 import Dropdown from "../common/Dropdown";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function TableCompany() {
-  const { companies } = useContext(AdminContext);
+function TableCompanyProduct(props) {
+  const { companyProducts } = useContext(AdminContext);
 
-  if (companies.length !== 0) {
+  useEffect(() => {}, [companyProducts]);
+
+  if (companyProducts) {
     return (
       <table className="min-w-full c-table">
         <thead>
           <tr>
-            {companies.dataHead.map((item) => (
+            {companyProducts.dataHead.map((item) => (
               <th
                 key={item}
                 scope="col"
@@ -30,28 +33,22 @@ function TableCompany() {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {companies.dataBody.map((company) => (
-            <tr key={company._id}>
-              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium sm:pl-4">
-                {company.mst}
+          {companyProducts.dataBody.map((product) => (
+            <tr key={product._id}>
+              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-4">
+                <div className="w-12 h-12 bg-c-white-1 overflow-hidden rounded-lg">
+                  <Avatar avtUrl={product.imgURL} classNames="rounded-lg" />
+                </div>
+              </td>
+              <td className="whitespace-nowrap px-3 py-4 content-wrap font-medium text-sm">
+                <p className="truncate">{product.name}</p>
               </td>
               <td className="whitespace-nowrap px-3 py-4 font-medium text-sm">
-                {company.name}
+                {product.category}
               </td>
               <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
-                {company.representative}
+                {<Badge active={product.status} />}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
-                {company.numberPhone}
-              </td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm text-center font-medium">
-                  <Check check={company.valid} />
-              </td>
-
-              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium">
-                <Badge active={company.active} />
-              </td>
-
               <td className="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 lg:pr-8">
                 <Dropdown>
                   <Menu.Items className="absolute menu-item top-full right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl overflow-hidden bg-[#fff] border border-c-gray-5 shadow-lg  focus:outline-none">
@@ -59,7 +56,7 @@ function TableCompany() {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            href={`/business/${company._id}`}
+                            href={`/business/${product._id}`}
                             className={classNames(
                               active
                                 ? " rounded-[30px] bg-c-blue-1 text-primary"
@@ -67,14 +64,14 @@ function TableCompany() {
                               "block px-[20px] py-[10px] text-[16px]"
                             )}
                           >
-                            Xem Thông Tin
+                            Đi đến sản phẩm
                           </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            href={`/business/${company._id}/companyProduct`}
+                            href={`/business/${product._id}?update=true`}
                             className={classNames(
                               active
                                 ? " rounded-[30px] bg-c-blue-1 text-primary"
@@ -82,7 +79,7 @@ function TableCompany() {
                               "block px-[20px] py-[10px] text-[16px]"
                             )}
                           >
-                            Xem sản phẩm
+                            Khóa sản phẩm
                           </Link>
                         )}
                       </Menu.Item>
@@ -97,7 +94,7 @@ function TableCompany() {
                               "block px-[20px] py-[10px] text-[16px]"
                             )}
                           >
-                            Media
+                            Đưa top đề xuất
                           </a>
                         )}
                       </Menu.Item>
@@ -113,4 +110,4 @@ function TableCompany() {
   }
 }
 
-export default TableCompany;
+export default TableCompanyProduct;

@@ -16,6 +16,7 @@ function Nav() {
       str += path;
     }
     console.log(str)
+
     switch (str) {
       case "/": {
         setCurrentLink(2);
@@ -27,6 +28,10 @@ function Nav() {
       }
       case "/personal": {
         setCurrentLink(4);
+        break;
+      }
+      case "/censorshipProduct": {
+        setCurrentLink(6);
         break;
       }
       default:
@@ -45,6 +50,7 @@ function Nav() {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
   return (
     <nav className="flex-1 space-y-1 px-2 pb-4">
       {navigation.map((item) => {

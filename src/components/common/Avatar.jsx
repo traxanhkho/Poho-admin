@@ -1,8 +1,8 @@
-export default function Avatar({ avtUrl }) {
+export default function Avatar({ avtUrl, classNames = "rounded-full" }) {
   return (
     <span className="relative inline-block">
       <img
-        className="h-12 w-12 rounded-full"
+        className={`h-12 w-12 ${classNames}`}
         src={avtUrl}
         alt="poho - avatar người dùng"
       />
