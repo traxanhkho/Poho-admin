@@ -1,11 +1,8 @@
-import { Menu } from "@headlessui/react";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
 import Avatar from "../common/Avatar";
-import Badge from "../common/Badge";
 import Check from "../common/Check";
-import Dropdown from "../common/Dropdown";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
