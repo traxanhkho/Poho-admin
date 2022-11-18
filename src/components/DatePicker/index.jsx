@@ -271,14 +271,7 @@ export default function DatePicker() {
                   ))}
               </div>
             )}{" "}
-            {/* {type === "year" && (
-              <Datepicker
-                datepickerHeaderDate={datepickerHeaderDate}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
-                closeDatepicker={() => setShowDatepicker(false)}
-              />
-            )} */}
+            
           </div>
         )}
       </div>

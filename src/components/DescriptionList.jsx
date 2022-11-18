@@ -64,10 +64,11 @@ const businessFile = [
 ];
 
 const pages = [
-  { name: "Hồ sơ Doanh nghiệp", href: "/business", current: false },
+  { name: "Công ty sản xuất thiết bị bảo hộ S2B", href: "/business", current: false },
 ];
 
 export default function DescriptionList() {
+  
   return (
     <div
       className="overflow-hidden p-4 bg-[#fff] shadow sm:rounded-lg"

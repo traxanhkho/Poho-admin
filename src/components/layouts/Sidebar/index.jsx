@@ -3,11 +3,11 @@ import { AdminContext } from "../../../context/AdminContext";
 import MenuSidebar from "./MenuSidebar";
 import MenuDialog from "./MenuDialog";
 import TopBar from "./TopBar";
+import Dashboard from "../../common/Dashboard";
 
 export default function Sidebar({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { navigation, userNavigation } = useContext(AdminContext);
-
 
   if (navigation && userNavigation) {
     return (
@@ -20,7 +20,9 @@ export default function Sidebar({ children }) {
           <MenuSidebar />
           <div className="flex flex-1 flex-col md:pl-64">
             <TopBar setSidebarOpen={setSidebarOpen} />
-            <main>{children}</main>
+            <main>
+              <Dashboard>{children}</Dashboard>
+            </main>
           </div>
         </div>
       </>

@@ -1,8 +1,7 @@
-import { ChevronLeftIcon, HomeIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { ChevronLeftIcon } from "@heroicons/react/20/solid";
 
-
-export default function Breadcrumb({ type, children, classNames , pages }) {
+export default function Breadcrumb({  children, classNames , pages }) {
   return (
     <nav
       className={`flex items-center gap-2 ${classNames}`}

@@ -1,9 +1,11 @@
+import React from 'react';
+
 function Header(props) {
-  return (
-    <header>
-    <h2>header section</h2>
-    </header>
-  );
+    return (
+        <div>
+            header section work!
+        </div>
+    );
 }
 
 export default Header;

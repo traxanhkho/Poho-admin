@@ -1,11 +1,11 @@
-import Link from "next/link";
 import { Menu } from "@headlessui/react";
-import Tables from "../../../../components/Tables/index";
-import Sidebar from "../../../../components/layouts/Sidebar";
+import Link from "next/link";
+import { useContext, useEffect } from "react";
 import Avatar from "../../../../components/common/Avatar";
 import Badge from "../../../../components/common/Badge";
 import Dropdown from "../../../../components/common/Dropdown";
-import { useContext, useEffect } from "react";
+import Sidebar from "../../../../components/layouts/Sidebar";
+import Tables from "../../../../components/Tables";
 import { AdminContext } from "../../../../context/AdminContext";
 
 function classNames(...classes) {
@@ -16,46 +16,53 @@ const data = [
   {
     _id: 1,
     imgURL:
-      "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
-    name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
-    category: "Điện tử  - Công nghệ",
+      "https://image-us.24h.com.vn/upload/2-2021/images/2021-05-22/anh-8-1621645023-458-width650height813.jpg",
+    name: "Công ty sản xuất thiết bị bảo hộ S2B",
+    type: "video",
     status: "active",
   },
   {
     _id: 2,
-    imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
-    name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
-    category: "Điện tử  - Công nghệ",
+    imgURL:
+      "https://image-us.24h.com.vn/upload/2-2021/images/2021-05-22/anh-8-1621645023-458-width650height813.jpg",
+    name: "Công ty sản xuất thiết bị bảo hộ S2B",
+    type: "video",
     status: "active",
   },
+
   {
     _id: 3,
     imgURL:
-      "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
-    name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
-    category: "Điện tử  - Công nghệ",
-    status: "lock",
-  },
-  {
-    _id: 4,
-    imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
-    name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
-    category: "Điện tử  - Công nghệ",
+      "https://image-us.24h.com.vn/upload/2-2021/images/2021-05-22/anh-8-1621645023-458-width650height813.jpg",
+    name: "Công ty sản xuất thiết bị bảo hộ S2B",
+    type: "video",
     status: "active",
   },
+
+  {
+    _id: 4,
+    imgURL:
+      "https://image-us.24h.com.vn/upload/2-2021/images/2021-05-22/anh-8-1621645023-458-width650height813.jpg",
+    name: "Công ty sản xuất thiết bị bảo hộ S2B",
+    type: "video",
+    status: "active",
+  },
+
   {
     _id: 5,
     imgURL:
-      "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
-    name: "Nước hoa bỏ túi Xmen for boss intense 18ml ",
-    category: "Điện tử  - Công nghệ",
-    status: "lock",
+      "https://image-us.24h.com.vn/upload/2-2021/images/2021-05-22/anh-8-1621645023-458-width650height813.jpg",
+    name: "Công ty sản xuất thiết bị bảo hộ S2B",
+    type: "video",
+    status: "active",
   },
+
   {
     _id: 6,
-    imgURL: "https://cf.shopee.vn/file/3bf98a971a93bda6053cac1c572247f9",
-    name: "Loa Bluetooth nghe nhạc không dây 100W công suất lớn Super Bass có cổng usb, thẻ nhớ, line 3.5mm pin 10400MAH sạc Type C Chip DSP TWS lên 200W cao cấp Hàng ...",
-    category: "Điện tử  - Công nghệ",
+    imgURL:
+      "https://image-us.24h.com.vn/upload/2-2021/images/2021-05-22/anh-8-1621645023-458-width650height813.jpg",
+    name: "Công ty sản xuất thiết bị bảo hộ S2B",
+    type: "video",
     status: "active",
   },
 ];
@@ -68,16 +75,16 @@ const columns = [
   },
   {
     path: "name",
-    label: "Tên sản phẩm",
+    label: "Tên media",
   },
   {
-    path: "category",
-    label: "Danh mục",
+    path: "type",
+    label: "Phân loại",
   },
   {
     path: "status",
-    label: "Trạng thái",
-    content: (item) => <Badge active={item.status} />,
+    label: "Trạng Thái",
+    content: (item) => <Badge active={item.active} />,
   },
   {
     key: "dp",
@@ -96,14 +103,14 @@ const columns = [
                     "block px-[20px] py-[10px] text-[16px]"
                   )}
                 >
-                  Đi đến sản phẩm
+                  Xem Thông Tin
                 </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href={`/business/${item._id}?update=true`}
+                  href={`/business/${item._id}/companyProduct`}
                   className={classNames(
                     active
                       ? " rounded-[30px] bg-c-blue-1 text-primary"
@@ -111,14 +118,14 @@ const columns = [
                     "block px-[20px] py-[10px] text-[16px]"
                   )}
                 >
-                  Khóa sản phẩm
+                  Xem sản phẩm
                 </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <Link
+                  href={`/business/${item._id}/media`}
                   className={classNames(
                     active
                       ? " rounded-[30px] bg-c-blue-1 text-primary"
@@ -126,8 +133,8 @@ const columns = [
                     "block px-[20px] py-[10px] text-[16px]"
                   )}
                 >
-                  Đưa top đề xuất
-                </a>
+                  Media
+                </Link>
               )}
             </Menu.Item>
           </div>
@@ -137,19 +144,21 @@ const columns = [
   },
 ];
 
-function CompanyProduct(props) {
+function Media() {
   const { setTopbar } = useContext(AdminContext);
+
   useEffect(() => {
     setTopbar([
       { name: "Hồ sơ doanh nghiệp", href: "/business", isChildren: false },
-      { name: "Danh sách sản phẩm", href: "#", isChildren: true },
+      { name: "Media", href: "#", isChildren: true },
     ]);
   }, []);
+
   return (
     <Sidebar>
-      <Tables columns={columns} data={data} />
+      <Tables data={data} columns={columns} />
     </Sidebar>
   );
 }
 
-export default CompanyProduct;
+export default Media;

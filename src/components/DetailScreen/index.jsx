@@ -1,9 +1,9 @@
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import Breadcrumb from "../common/Breadcrumb";
 import LanguageSelector from "../common/LanguageSelector";
+import { AdminContext } from "../../context/AdminContext";
 
 const profile = {
   name: "Đặng kim Anh",
@@ -74,10 +74,14 @@ const pages = [{ name: "Hồ sơ cá nhân", href: "/personal", current: false }
 export default function DetailScreen() {
   const [update, setUpdate] = useState(false);
   const router = useRouter();
+  const { setTopbar } = useContext(AdminContext) ; 
 
   useEffect(() => {
     const query = router.query.update === "true";
-
+    setTopbar([
+      { name: "Hồ Sơ Cá Nhân", href: "/personal", isChildren: false } , 
+      { name: "Chi tiết Danh Nghiệp", href: "#", isChildren: true } , 
+    ])
     setUpdate(query);
   }, []);
 

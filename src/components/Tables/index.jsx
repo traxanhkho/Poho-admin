@@ -1,11 +1,12 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Modal from "../common/Modal";
 import Pagination from "../common/Pagination";
-import Search from "../common/Search";
-import DatePicker from "../DatePicker";
+import TableBody from "./TableBody";
+import TableHeader from "./TableHeader";
+import TableHeading from "./TableHeading";
 
-export default function Tables({ children }) {
+export default function Tables({ children, data, columns }) {
   const router = useRouter();
   const [search, setSearch] = useState(true);
   const [open, setOpen] = useState(false);
@@ -17,30 +18,15 @@ export default function Tables({ children }) {
   return (
     <>
       <div className="px-4 sm:p-4 bg-[#fff] rounded-2xl">
-        <div className="sm:flex sm:items-center sm:h-10">
-          <div className="sm:flex-auto flex items-center mt-2 gap-4">
-            <h1 className="text-xl font-semibold text-gray-900">Danh Sách</h1>
-            {router.pathname == "/censorshipProduct" ? <DatePicker /> : null}
-          </div>
-          <div className="mt-4 sm:mt-0 sm:flex-none">
-            {search ? (
-              <Search />
-            ) : (
-              <button
-                type="button"
-                onClick={() => setOpen(!open)}
-                className="capitalize font-medium text-[#fff] hover:opacity-80  h-10 w-40 rounded-[30px] bg-primary"
-              >
-                Thêm danh mục
-              </button>
-            )}
-          </div>
-        </div>
+        <TableHeading search={search} setOpen={setOpen} open={open} />
         <div className="my-4 flex flex-col">
           <div className="overflow-x-auto">
             <div className="inline-block min-w-full align-middle">
               <div className="overflow-hidden shadow-sm ring-1 ring-black ring-opacity-5">
-                {children}
+                <table className="min-w-full c-table">
+                  <TableHeader data={data} columns={columns} />
+                  <TableBody data={data} columns={columns} />
+                </table>
                 <Pagination />
               </div>
             </div>

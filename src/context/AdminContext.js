@@ -1,12 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import {
-  getCensorshipProduct,
-  getDataCompanies,
-  getDataCompanyProducts,
-  getDataListCategory,
-  getDataUi,
-  getDataUsers,
-} from "../components/services/fakeServices";
+import { createContext, useEffect, useState } from "react";
+import { getDataUi } from "../services/fakeServices";
 
 export const AdminContext = createContext();
 
@@ -14,11 +7,7 @@ function UseAdminContext({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [navigation, setNavigation] = useState([]);
   const [userNavigation, setUserNavigation] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [companies, setCompanies] = useState([]);
-  const [listCategory, setListCategory] = useState([]);
-  const [companyProducts, setCompanyProducts] = useState(null);
-  const [censorshipProduct, setCensorshipProduct] = useState(null);
+  const [topbar, setTopbar] = useState([]);
 
   const data = {
     currentUser: currentUser,
@@ -26,21 +15,14 @@ function UseAdminContext({ children }) {
     navigation,
     setNavigation,
     userNavigation,
-    users,
-    companies,
-    listCategory,
-    companyProducts,
-    censorshipProduct,
+    topbar,
+    setTopbar,
   };
 
   useEffect(() => {
     setNavigation(getDataUi().navigation);
     setUserNavigation(getDataUi().userNavigation);
-    setUsers(getDataUsers());
-    setCompanies(getDataCompanies());
-    setListCategory(getDataListCategory());
-    setCompanyProducts(getDataCompanyProducts());
-    setCensorshipProduct(getCensorshipProduct());
+    setTopbar(getDataUi().topbar);
   }, []);
 
   return <AdminContext.Provider value={data}>{children}</AdminContext.Provider>;

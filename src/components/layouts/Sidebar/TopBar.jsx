@@ -1,38 +1,12 @@
+import { useContext } from "react";
+import Link from "next/link";
+import { AdminContext } from "../../../context/AdminContext";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 import UserMenu from "./UserMenu";
 
 function TopBar({ setSidebarOpen }) {
-  const router = useRouter();
-  const [title, setTitle] = useState("");
-
-  useEffect(() => {
-    let str = "/";
-    for (let i = 1; i < router.asPath.length; i++) {
-      let path = router.asPath.charAt(i);
-      if (path === "/") break;
-      str += path;
-    }
-    
-    switch (str) {
-      case "/": {
-        setTitle("Danh Mục");
-        break;
-      }
-      case "/business": {
-        setTitle("Hồ sơ doanh nghiệp");
-        break;
-      }
-      case "/personal": {
-        setTitle("Hồ sơ cá nhân");
-        break;
-      }
-      default:
-        setTitle("Danh mục");
-    }
-  }, []);
+  const { topbar } = useContext(AdminContext);
 
   return (
     <div className="sticky top-0 z-[2] flex h-16 flex-shrink-0 bg-[#fff] shadow">
@@ -46,7 +20,17 @@ function TopBar({ setSidebarOpen }) {
       </button>
       <div className="flex flex-1 justify-between items-center px-4">
         <div>
-          <h4 className="font-bold capitalize">{title}</h4>
+          {topbar.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`${
+                item.isChildren ? "text-c-gray-3" : "text-[#000] font-bold "
+              } capitalize mr-2 pr-2 border-r border-solid border-c-gray-4 last:border-none hover:opacity-70`}
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
         <div className="ml-4 flex items-center md:ml-6">
           {/* Profile dropdown */}

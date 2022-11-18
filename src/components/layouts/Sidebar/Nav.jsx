@@ -34,6 +34,10 @@ function Nav() {
         setCurrentLink(6);
         break;
       }
+      case "/report": {
+        setCurrentLink(8);
+        break;
+      }
       default:
         setCurrentLink(2);
     }

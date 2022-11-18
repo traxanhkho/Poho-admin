@@ -1,10 +1,11 @@
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { loggin } from "../components/services/AuthServices";
 import { AdminContext } from "../context/AdminContext";
+import { loggin }from "../services/AuthServices"
 
 export default function Login() {
+  
   const router = useRouter();
   const {
     register,
