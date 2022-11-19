@@ -6,6 +6,7 @@ const colors = {
   "c-black-1": "#121212",
   "c-black-2": "#130F26",
   "c-white-1": "#f4f4f4",
+  "c-yellow-1": "#FFD60A",
   "c-gray-1": "rgba(255, 255, 255, 0.5)",
   "c-gray-2": "rgba(255, 255, 255, 0.1)",
   "c-gray-3": "#545454",
@@ -30,5 +31,7 @@ module.exports = {
     //..
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 };

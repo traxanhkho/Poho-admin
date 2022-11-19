@@ -88,7 +88,7 @@ const columns = [
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href={`/business/${item._id}`}
+                  href={`/business/${item._id}/companyProduct/${item._id}`}
                   className={classNames(
                     active
                       ? " rounded-[30px] bg-c-blue-1 text-primary"
@@ -103,7 +103,7 @@ const columns = [
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href={`/business/${item._id}?update=true`}
+                  href={`#`}
                   className={classNames(
                     active
                       ? " rounded-[30px] bg-c-blue-1 text-primary"
