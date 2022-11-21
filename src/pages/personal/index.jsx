@@ -10,6 +10,7 @@ import Avatar from "../../components/common/Avatar";
 import Badge from "../../components/common/Badge";
 import Dropdown from "../../components/common/Dropdown";
 import Heading from "../../components/common/Heading";
+import Search from "../../components/common/Search";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -187,7 +188,7 @@ export default function Home() {
         </Head>
         <Sidebar>
           <div className="px-4 pt-4">
-            <Heading />
+            <Heading right={[() => <Search />]} />
           </div>
           <Tables columns={columns} data={data} />
         </Sidebar>

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { AdminContext } from "../context/AdminContext";
 import { getCategory } from "../services/fakeServices";
@@ -8,6 +8,7 @@ import Sidebar from "../components/layouts/Sidebar";
 import SlideOver from "../components/SlideOver";
 import Tables from "../components/Tables";
 import Heading from "../components/common/Heading";
+import CategoryModal from "../components/CategoryModal";
 
 const data = [
   {
@@ -49,6 +50,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
+  const [title,setTitle] = useState("Thêm danh mục") ;
 
   useEffect(() => {
     setTopbar([{ name: "Danh Mục", href: "#", isChildren: false }]);
@@ -56,6 +58,7 @@ export default function Home() {
 
   const handleDataModal = (id) => {
     setDataModal(getCategory(id));
+    setTitle("Chỉnh sửa danh mục") ; 
     setModalOpen(true);
   };
 
@@ -76,7 +79,7 @@ export default function Home() {
     {
       key: "edit",
       content: (item) => (
-        <button onClick={() => handleDataModal(item._id)}>chỉnh sửa</button>
+        <button onClick={() => handleDataModal(item._id)}>Chỉnh sửa</button>
       ),
     },
     {
@@ -96,6 +99,18 @@ export default function Home() {
       });
     }
   }, []);
+  const renderAddCategory = () => (
+    <button
+      type="button"
+      onClick={() => {
+        setTitle("Thêm danh mục");
+        setModalOpen(true);
+      }}
+      className="capitalize font-medium text-[#fff] hover:opacity-80  h-10 w-40 rounded-[30px] bg-primary"
+    >
+      Thêm danh mục
+    </button>
+  );
 
   if (currentUser) {
     return (
@@ -107,14 +122,12 @@ export default function Home() {
         </Head>
         <Sidebar>
           <div className="px-4 pt-4">
-            <Heading />
+            <Heading right={[renderAddCategory]} />
           </div>
           <Tables data={data} columns={columns} />
-          <Modal
-            open={modalOpen}
-            setOpen={setModalOpen}
-            dataModal={dataModal}
-          />
+          <Modal open={modalOpen}  setOpen={setModalOpen}>
+            <CategoryModal title={title} setOpen={setModalOpen} dataModal={dataModal} />
+          </Modal>
           <SlideOver button="hidden" open={open} setOpen={setOpen} />
         </Sidebar>
       </>

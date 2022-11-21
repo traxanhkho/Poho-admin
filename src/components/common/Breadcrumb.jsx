@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { ChevronLeftIcon } from "@heroicons/react/20/solid";
+import { useHistory } from "../../context/History";
 
 export default function Breadcrumb({  children, classNames , pages }) {
+  const { back } = useHistory() ; 
+
   return (
     <nav
       className={`flex items-center gap-2 ${classNames}`}
@@ -11,9 +14,9 @@ export default function Breadcrumb({  children, classNames , pages }) {
         {pages.map((page) => (
           <li key={page.name}>
             <div className="flex items-center">
-              <Link
-                href={page.href}
-                className="ml-1 flex text-[18px] leading-7 font-bold hover:text-c-gray-3"
+              <h4
+                onClick={() => back()}
+                className="ml-1 flex text-[18px] cursor-pointer leading-7 font-bold hover:text-c-gray-3"
                 aria-current={page.current ? "page" : undefined}
               >
                 <ChevronLeftIcon
@@ -21,7 +24,7 @@ export default function Breadcrumb({  children, classNames , pages }) {
                   aria-hidden="true"
                 />
                 {page.name}
-              </Link>
+              </h4>
             </div>
           </li>
         ))}

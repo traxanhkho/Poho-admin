@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { Menu, Tab } from "@headlessui/react";
+import { useState } from "react";
 import Link from "next/link";
+import { Menu, Tab } from "@headlessui/react";
+import FAQs from "../FAQs" ; 
 import Dropdown from "../common/Dropdown";
 import Avatar from "../common/Avatar";
 import { useRouter } from "next/router";
+import Modal from "../common/Modal";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 const product = {
   name: "Tai Nghe Chụp Tai Gaming H3T - Tai Nghe Game Thủ",
@@ -69,8 +72,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProductDetailTab() {
+export default function ProductDetailTab({ checking }) {
   const [readMore, setReadMore] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
   const router = useRouter();
 
   return (
@@ -124,7 +129,7 @@ export default function ProductDetailTab() {
             </Tab.Panels>
           </Tab.Group>
           <Link
-            href={`/business/${router.query.companyId}`}
+            href={`/business/${router.query.companyId || router.query.reviewProductId}`}
             className="flex px-4 py-2 items-center bg-c-white-1 rounded-2xl mt-4 hover:text-primary"
           >
             <Avatar avtUrl="https://tokyometro.vn/wp-content/uploads/2022/09/1663776770_410_200-Anh-gai-xinh-rang-khenh-de-thuong-duyen-dang.jpg" />
@@ -167,58 +172,107 @@ export default function ProductDetailTab() {
             <h1 className="text-3xl mr-[100px] font-bold tracking-tight text-gray-900">
               {product.name}
             </h1>
-            <ul className="absolute top-0 right-0 flex items-center gap-2">
-              <li>
-                <img
-                  src="/assets/images/icon/Heart.svg"
-                  alt="icon trái tim - Poho"
-                />
-              </li>
-              <li>
-                <img
-                  src="/assets/images/icon/qr-code.svg"
-                  alt="icon qr code - Poho"
-                />
-              </li>
-              <li>
-                <Dropdown>
-                  <Menu.Items className="absolute menu-item top-full right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl overflow-hidden bg-[#fff] border border-c-gray-5 shadow-lg  focus:outline-none">
-                    <div className="p-2">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            href={`/business/1`}
-                            className={classNames(
-                              active
-                                ? " rounded-[30px] bg-c-blue-1 text-primary"
-                                : "text-[black]",
-                              "block px-[20px] py-[10px] text-[16px]"
-                            )}
-                          >
-                            Sao chép đường link
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            href={`/business/1/companyProduct`}
-                            className={classNames(
-                              active
-                                ? " rounded-[30px] bg-c-blue-1 text-primary"
-                                : "text-[black]",
-                              "block px-[20px] py-[10px] text-[16px]"
-                            )}
-                          >
-                            Báo cáo sản phẩm
-                          </Link>
-                        )}
-                      </Menu.Item>
+            {checking && (
+              <div className="absolute top-0 right-0 flex flex-col gap-2 w-[100px]">
+                <button
+                  className="bg-primary hover:opacity-70 shadow-sm px-4 py-3 rounded-lg font-medium capitalize text-[white]"
+                  onClick={() => {
+                    setIsChecking(true);
+                    setOpen(true);
+                  }}
+                >
+                  Duyệt
+                </button>
+                <button
+                  className="bg-c-blue-1 hover:opacity-70 shadow-sm px-4 py-3 rounded-lg  font-medium capitalize text-primary border border-solid border-primary"
+                  onClick={() => {
+                    setIsChecking(false);
+                    setOpen(true);
+                  }}
+                >
+                  Báo cáo
+                </button>
+                <Modal open={open} setOpen={setOpen}>
+                  {isChecking && (
+                    <div>
+                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-c-green-2">
+                        <CheckIcon
+                          className="h-6 w-6 text-c-green-1"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <h2 className="my-4 text-lg text-center">Bạn có đồng ý xét duyệt sản phẩm này ?</h2>
+                      <div className="flex gap-4 justify-around ">
+                        <button
+                          className="inline-flex items-center justify-center w-32  rounded-md border border-c-gray-4 bg-c-white-1 px-3 py-2 text-sm font-medium leading-4  shadow-sm hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          onClick={() => setOpen(false)}
+                        >
+                          Đóng lại
+                        </button>
+                        <button className="inline-flex items-center justify-center w-32 rounded-md border border-primary bg-primary px-3 py-2 text-sm font-medium leading-4 text-[white] shadow-sm hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                          Đồng ý
+                        </button>
+                      </div>
                     </div>
-                  </Menu.Items>
-                </Dropdown>
-              </li>
-            </ul>
+                  )}
+                  {!isChecking && <FAQs />}
+                </Modal>
+              </div>
+            )}
+            {!checking && (
+              <ul className="absolute top-0 right-0 flex items-center gap-2">
+                <li>
+                  <img
+                    src="/assets/images/icon/Heart.svg"
+                    alt="icon trái tim - Poho"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="/assets/images/icon/qr-code.svg"
+                    alt="icon qr code - Poho"
+                  />
+                </li>
+                <li>
+                  <Dropdown>
+                    <Menu.Items className="absolute menu-item top-full right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl overflow-hidden bg-[#fff] border border-c-gray-5 shadow-lg  focus:outline-none">
+                      <div className="p-2">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              href={`/business/1`}
+                              className={classNames(
+                                active
+                                  ? " rounded-[30px] bg-c-blue-1 text-primary"
+                                  : "text-[black]",
+                                "block px-[20px] py-[10px] text-[16px]"
+                              )}
+                            >
+                              Sao chép đường link
+                            </Link>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              href={`/business/1/companyProduct`}
+                              className={classNames(
+                                active
+                                  ? " rounded-[30px] bg-c-blue-1 text-primary"
+                                  : "text-[black]",
+                                "block px-[20px] py-[10px] text-[16px]"
+                              )}
+                            >
+                              Báo cáo sản phẩm
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      </div>
+                    </Menu.Items>
+                  </Dropdown>
+                </li>
+              </ul>
+            )}
           </div>
 
           <div className="mt-3">

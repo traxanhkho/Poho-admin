@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import Avatar from "../../components/common/Avatar";
 import Check from "../../components/common/Check";
 import Heading from "../../components/common/Heading";
+import Search from "../../components/common/Search";
 import Sidebar from "../../components/layouts/Sidebar";
 import Tables from "../../components/Tables";
 import { AdminContext } from "../../context/AdminContext";
@@ -88,7 +89,7 @@ const columns = [
   {
     key: "checking",
     content: (item) => (
-      <Link href={"#checking"}>
+      <Link href={`/censorshipProduct/${item._id}`}>
         <svg
           width="24"
           height="24"
@@ -115,9 +116,8 @@ function CensorshipProduct(props) {
   return (
     <Sidebar>
       <div className="px-4 pt-4">
-        <Heading />
+        <Heading right={[() => <Search />]} />
       </div>
-
       <Tables data={data} columns={columns}></Tables>
     </Sidebar>
   );

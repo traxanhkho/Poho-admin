@@ -7,6 +7,7 @@ import Check from "../../components/common/Check";
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
 import Heading from "../../components/common/Heading";
+import DatePicker from "../../components/DatePicker";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -159,7 +160,7 @@ function Report() {
   return (
     <Sidebar>
       <div className="px-4 pt-4">
-        <Heading />
+        <Heading left={[() => <DatePicker />]} />
       </div>
       <Tables columns={columns} data={data} />
     </Sidebar>
