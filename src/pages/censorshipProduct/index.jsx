@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useContext, useEffect } from "react";
 import Avatar from "../../components/common/Avatar";
 import Check from "../../components/common/Check";
+import Heading from "../../components/common/Heading";
 import Sidebar from "../../components/layouts/Sidebar";
 import Tables from "../../components/Tables";
 import { AdminContext } from "../../context/AdminContext";
@@ -106,13 +107,17 @@ const columns = [
 ];
 
 function CensorshipProduct(props) {
-  const { setTopbar } = useContext(AdminContext) ; 
+  const { setTopbar } = useContext(AdminContext);
 
-  useEffect(() =>{
-    setTopbar([{ name: "Kiểm duyệt sản phẩm", href: "#", isChildren: false }]) ; 
-  },[])
+  useEffect(() => {
+    setTopbar([{ name: "Kiểm duyệt sản phẩm", href: "#", isChildren: false }]);
+  }, []);
   return (
     <Sidebar>
+      <div className="px-4 pt-4">
+        <Heading />
+      </div>
+
       <Tables data={data} columns={columns}></Tables>
     </Sidebar>
   );

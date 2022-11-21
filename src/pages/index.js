@@ -7,6 +7,7 @@ import Modal from "../components/common/Modal";
 import Sidebar from "../components/layouts/Sidebar";
 import SlideOver from "../components/SlideOver";
 import Tables from "../components/Tables";
+import Heading from "../components/common/Heading";
 
 const data = [
   {
@@ -105,6 +106,9 @@ export default function Home() {
           <link href="https://rsms.me/inter/inter.css" />
         </Head>
         <Sidebar>
+          <div className="px-4 pt-4">
+            <Heading />
+          </div>
           <Tables data={data} columns={columns} />
           <Modal
             open={modalOpen}

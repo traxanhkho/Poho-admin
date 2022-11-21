@@ -9,12 +9,11 @@ import Tables from "../../components/Tables";
 import Avatar from "../../components/common/Avatar";
 import Badge from "../../components/common/Badge";
 import Dropdown from "../../components/common/Dropdown";
-
+import Heading from "../../components/common/Heading";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 
 const data = [
   {
@@ -167,7 +166,7 @@ const columns = [
 
 export default function Home() {
   const router = useRouter();
-  const { currentUser , setTopbar } = useContext(AdminContext);
+  const { currentUser, setTopbar } = useContext(AdminContext);
 
   useEffect(() => {
     if (!currentUser) {
@@ -187,6 +186,9 @@ export default function Home() {
           <link href="https://rsms.me/inter/inter.css" />
         </Head>
         <Sidebar>
+          <div className="px-4 pt-4">
+            <Heading />
+          </div>
           <Tables columns={columns} data={data} />
         </Sidebar>
       </>

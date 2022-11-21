@@ -35,7 +35,7 @@ const dataUI = {
     {
       _id: 7,
       name: "Thông báo",
-      href: "/notication",
+      href: "/notification",
       iconLink: "/assets/images/icon/Notification.svg",
       current: false,
     },

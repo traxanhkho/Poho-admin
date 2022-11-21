@@ -7,6 +7,7 @@ import Check from "../../components/common/Check";
 import Dropdown from "../../components/common/Dropdown";
 import Sidebar from "../../components/layouts/Sidebar";
 import Tables from "../../components/Tables";
+import Heading from "../../components/common/Heading";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -163,10 +164,13 @@ const columns = [
 function CompanyProfile(props) {
   const { setTopbar } = useContext(AdminContext);
   useEffect(() => {
-    setTopbar([{ name: "Hồ sơ doanh nghiệp", href: "#", isChildren: false }] );
+    setTopbar([{ name: "Hồ sơ doanh nghiệp", href: "#", isChildren: false }]);
   }, []);
   return (
     <Sidebar>
+      <div className="px-4 pt-4">
+        <Heading />
+      </div>
       <Tables data={data} columns={columns}></Tables>
     </Sidebar>
   );

@@ -12,10 +12,10 @@ function Nav() {
     let str = "/";
     for (let i = 1; i < router.asPath.length; i++) {
       let path = router.asPath.charAt(i);
-      if(path === "/") return ; 
+      if (path === "/") return;
       str += path;
     }
-    console.log(str)
+    console.log(str);
 
     switch (str) {
       case "/": {
@@ -32,6 +32,10 @@ function Nav() {
       }
       case "/censorshipProduct": {
         setCurrentLink(6);
+        break;
+      }
+      case "/notification": {
+        setCurrentLink(7);
         break;
       }
       case "/report": {

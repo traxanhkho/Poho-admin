@@ -10,10 +10,9 @@ import {
   getDay,
 } from "date-fns";
 
-
 // type DatepickerType = "date" | "month" | "year";
 
-export default function DatePicker() {
+export default function DatePicker({ right = false }) {
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [dayCount, setDayCount] = useState([]);
   const [blankDays, setBlankDays] = useState([]);
@@ -136,7 +135,9 @@ export default function DatePicker() {
         </div>
         {showDatepicker && (
           <div
-            className="bg-[white] mt-[40px] rounded-lg shadow p-4 absolute top-0 left-0"
+            className={`bg-c-blue-1 mt-[40px] rounded-lg shadow-md p-4 absolute top-0 ${
+              right ? "right-0" : "left-0"
+            }`}
             style={{ width: "17rem" }}
           >
             <div className="flex justify-between items-center mb-2">
@@ -166,7 +167,7 @@ export default function DatePicker() {
                   onClick={showMonthPicker}
                   className="flex-grow p-1 text-lg font-bold text-gray-800 cursor-pointer hover:bg-gray-200 rounded-lg"
                 >
-                  <p className="text-center">
+                  <p className="text-center text-primary">
                     {format(datepickerHeaderDate, "MMMM")}
                   </p>
                 </div>
@@ -175,7 +176,7 @@ export default function DatePicker() {
                 onClick={showYearPicker}
                 className="flex-grow p-1 text-lg font-bold text-gray-800 cursor-pointer hover:bg-gray-200 rounded-lg"
               >
-                <p className="text-center">
+                <p className="text-center text-primary">
                   {format(datepickerHeaderDate, "yyyy")}
                 </p>
               </div>
@@ -271,7 +272,6 @@ export default function DatePicker() {
                   ))}
               </div>
             )}{" "}
-            
           </div>
         )}
       </div>

@@ -6,6 +6,7 @@ import Tables from "../../components/Tables";
 import Check from "../../components/common/Check";
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
+import Heading from "../../components/common/Heading";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -149,14 +150,17 @@ const columns = [
 ];
 
 function Report() {
-  const { setTopbar } = useContext(AdminContext) ; 
+  const { setTopbar } = useContext(AdminContext);
 
-  useEffect(() =>{
-    setTopbar([{ name: "Báo cáo", href: "#", isChildren: false }]) ; 
-  },[])
+  useEffect(() => {
+    setTopbar([{ name: "Báo cáo", href: "#", isChildren: false }]);
+  }, []);
 
   return (
     <Sidebar>
+      <div className="px-4 pt-4">
+        <Heading />
+      </div>
       <Tables columns={columns} data={data} />
     </Sidebar>
   );
