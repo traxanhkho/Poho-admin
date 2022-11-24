@@ -1,8 +1,17 @@
+import { Menu } from "@headlessui/react";
+import Link from "next/link";
 import Badge from "./common/Badge";
 import Breadcrumb from "./common/Breadcrumb";
 import DescriptionLinkSocials from "./common/DescriptionLinkSocials";
 import DescriptionListAvatar from "./common/DescriptionListAvatar";
+import Dropdown from "./common/Dropdown";
 import LanguageSelector from "./common/LanguageSelector";
+
+
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const businessFile = [
   {
@@ -68,19 +77,81 @@ const pages = [
 ];
 
 export default function DescriptionList() {
-  
+
   return (
     <div
       className="overflow-hidden p-4 bg-[#fff] shadow sm:rounded-lg"
       pages={pages}
     >
       <div>
-        <Breadcrumb
-          pages={pages}
-          classNames="pb-4 border-b boder-solid border-c-white-1"
-        >
-          <Badge active={{ isActive: true, label: "đang hoạt động" }} />
-        </Breadcrumb>
+        <div className="flex items-center ">
+          <Breadcrumb
+            pages={pages}
+            classNames="pb-4 border-b boder-solid border-c-white-1"
+          >
+            <Badge active={{ isActive: true, label: "đang hoạt động" }} />
+          </Breadcrumb>
+          <span className="pb-4 ml-auto">
+            <span className="inline-flex items-center gap-4">
+              <h5 className="font-medium">Đi Đến Trang</h5>
+              <i className="fa fa-chevron-right mt-1" aria-hidden="true"></i>
+            </span>
+            <span className="relative top-[3px]">
+              <Dropdown>
+                <Menu.Items className="absolute menu-item top-full right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl overflow-hidden bg-[#fff] border border-c-gray-5 shadow-lg  focus:outline-none">
+                  <div className="p-2">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href={`/business/1`}
+                          className={classNames(
+                            active
+                              ? " rounded-[30px] bg-c-blue-1 text-primary"
+                              : "text-[black]",
+                            "block px-[20px] py-[10px] text-[16px]"
+                          )}
+                        >
+                          Xác định DN hợp lệ
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href={`/business/1/companyProduct`}
+                          className={classNames(
+                            active
+                              ? " rounded-[30px] bg-c-blue-1 text-primary"
+                              : "text-[black]",
+                            "block px-[20px] py-[10px] text-[16px]"
+                          )}
+                        >
+                          Gửi thông báo
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href={`/business/1/companyProduct`}
+                          className={classNames(
+                            active
+                              ? " rounded-[30px] bg-c-blue-1 text-primary"
+                              : "text-[black]",
+                            "block px-[20px] py-[10px] text-[16px]"
+                          )}
+                        >
+                          Khóa doanh nghiệp
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Dropdown>
+            </span>
+          </span>
+        </div>
+
         <div className="my-4">
           <LanguageSelector />
         </div>

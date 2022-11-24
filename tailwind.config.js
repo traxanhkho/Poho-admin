@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = {
-  primary: "#1e5bee",
+  "primary": "#1e5bee",
   "c-blue-1": "#F4F7FE",
   "c-black-1": "#121212",
   "c-black-2": "#130F26",
@@ -17,6 +17,7 @@ const colors = {
   "c-gray-6": "#F2F2F7",
   "c-gray-7": "rgba(0, 0, 0, 0.3)",
   "c-red-1": "#FF3B30",
+  
 };
 
 module.exports = {

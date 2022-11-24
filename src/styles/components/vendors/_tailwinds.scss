@@ -30,9 +30,17 @@
   }
 }
 
-
-.content-wrap{
+.content-wrap {
   max-width: 400px;
   word-wrap: break-word;
-  white-space: pre-wrap;  
+  white-space: pre-wrap;
+}
+
+.c-bg-linear {
+  background: linear-gradient(
+    90deg,
+    #2a97ff 25.86%,
+    #2a7fff 56.32%,
+    #2a55ff 100.03%
+  );
 }
